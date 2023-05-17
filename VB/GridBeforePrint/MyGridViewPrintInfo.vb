@@ -17,7 +17,7 @@ Namespace GridBeforePrint
             MyBase.New(args)
         End Sub
 
-        Public Overrides Sub PrintHeader(ByVal graph As DevExpress.XtraPrinting.IBrickGraphics)
+        Public Overrides Sub PrintHeader(ByVal graph As BrickGraphics)
             If Not View.OptionsPrint.PrintHeader Then
                 Return
             End If
@@ -76,9 +76,9 @@ Namespace GridBeforePrint
                 displayText = StringPainter.Default.RemoveFormat(displayText, True)
             End If
             Dim horzAlignment As HorzAlignment = (TryCast(Me.View, MyGridView)).GetHorzAlignment(rowHandle, cell.Column, cell.Appearance.HAlignment)
-            Dim info As New PrintCellHelperInfo(New Point(If(cell.Column Is Nothing, -1, cell.Column.AbsoluteIndex), rowHandle), LineColor, PS, cell.CellValue, cell.Appearance, displayText, r, Graph, horzAlignment, Me.View.OptionsPrint.PrintHorzLines, Me.View.OptionsPrint.PrintVertLines, cell.ColumnInfo.Column.DisplayFormat.FormatString, CalcBrickBordersEX(), PaddingInfo.Empty)
+            Dim info As New PrintCellHelperInfo(New Point(If(cell.Column Is Nothing, -1, cell.Column.AbsoluteIndex), rowHandle), LineColor, PrintingSystemBase, cell.CellValue, cell.Appearance, displayText, r, Graph, horzAlignment, Me.View.OptionsPrint.PrintHorzLines, Me.View.OptionsPrint.PrintVertLines, cell.ColumnInfo.Column.DisplayFormat.FormatString, CalcBrickBordersEX(), PaddingInfo.Empty)
 
-            Dim brick As IVisualBrick = cell.Editor.GetBrick(info)
+            Dim brick As VisualBrick = cell.Editor.GetBrick(info)
 
             Dim view As MyGridView = TryCast(Me.View, MyGridView)
             view.RaiseSamplePrintEvent(Me, New SamplePrintEventArgs(cell.RowHandle, cell.Column, brick, False))
