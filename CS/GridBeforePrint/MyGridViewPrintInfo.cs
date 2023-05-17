@@ -15,7 +15,7 @@ namespace GridBeforePrint
     {
         public MyGridViewPrintInfo(PrintInfoArgs args) : base(args) { }
 
-        public override void PrintHeader(DevExpress.XtraPrinting.IBrickGraphics graph)
+        public override void PrintHeader(BrickGraphics graph)
         {
             if (!View.OptionsPrint.PrintHeader) return;
             Point indent = new Point(Indent, HeaderY);
@@ -75,7 +75,7 @@ namespace GridBeforePrint
             HorzAlignment horzAlignment = (View as MyGridView).GetHorzAlignment(rowHandle, cell.Column, cell.Appearance.HAlignment);
             PrintCellHelperInfo info = new PrintCellHelperInfo(new Point(cell.Column == null ? -1 : cell.Column.AbsoluteIndex, rowHandle),
                 LineColor,
-                PS,
+                PrintingSystemBase,
                 cell.CellValue,
                 cell.Appearance,
                 displayText,
@@ -89,7 +89,7 @@ namespace GridBeforePrint
                 PaddingInfo.Empty
                 );
 
-            IVisualBrick brick = cell.Editor.GetBrick(info);
+            VisualBrick brick = cell.Editor.GetBrick(info);
 
             MyGridView view = this.View as MyGridView;
             view.RaiseSamplePrintEvent(this, new SamplePrintEventArgs(cell.RowHandle, cell.Column, brick, false));
