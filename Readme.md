@@ -3,22 +3,28 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T368970)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-<!-- default file list -->
-*Files to look at*:
+
+# WinForms Data Grid - Custom print data cells and column headers in Print Preview
+
+This example creates a custom Grid Control with new custom draw events (`SamplePrintEvent`, `HeaderPrintEvent`) that allow you to paint data cells and column headers in print preview:
+
+![WinForms Data Grid - Custom print data cells and column headers in Print Preview](https://raw.githubusercontent.com/DevExpress-Examples/gridcontrol-how-to-implement-events-for-custom-printing-cells-and-headers-t368970/23.1.2%2B/media/winforms-grid-custom-paint-print.png)
+
+```csharp
+private void MyGridView1_HeaderPrintEvent(object sender, HeaderPrintEventArgs args) {
+    args.Brick.Style.BackColor = Color.PowderBlue;
+}
+private void simpleButton2_Click(object sender, EventArgs e) {
+    myGridControl1.ShowPrintPreview();
+}
+```
+
+
+## Files to Review
 
 * [Customer.cs](./CS/GridBeforePrint/Customer.cs) (VB: [Customer.vb](./VB/GridBeforePrint/Customer.vb))
 * [Form1.cs](./CS/GridBeforePrint/Form1.cs) (VB: [Form1.vb](./VB/GridBeforePrint/Form1.vb))
 * [HeaderPrintEventArgs.cs](./CS/GridBeforePrint/HeaderPrintEventArgs.cs) (VB: [HeaderPrintEventArgs.vb](./VB/GridBeforePrint/HeaderPrintEventArgs.vb))
 * [MyGridControl.cs](./CS/GridBeforePrint/MyGridControl.cs) (VB: [MyGridControl.vb](./VB/GridBeforePrint/MyGridControl.vb))
 * [MyGridViewPrintInfo.cs](./CS/GridBeforePrint/MyGridViewPrintInfo.cs) (VB: [MyGridViewPrintInfo.vb](./VB/GridBeforePrint/MyGridViewPrintInfo.vb))
-* [Program.cs](./CS/GridBeforePrint/Program.cs) (VB: [Program.vb](./VB/GridBeforePrint/Program.vb))
 * [SamplePrintEventArgs.cs](./CS/GridBeforePrint/SamplePrintEventArgs.cs) (VB: [SamplePrintEventArgs.vb](./VB/GridBeforePrint/SamplePrintEventArgs.vb))
-<!-- default file list end -->
-# GridControl - How to implement events for custom printing cells and headers
-
-
-<p>This is an example of a GridControl that has two custom events. These events can be used for custom drawing cells and headers in PrintPreview.<br>The MyGridViewPrintInfo class inherits from the GridViewPrintInfo and contains overridden methods: <br>1) PrintRowCell - for raising events for custom drawing cells;<br>2) PrintHeader - for raising events for custom drawing headers.</p>
-
-<br/>
-
-
