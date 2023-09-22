@@ -4,7 +4,7 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 
-# WinForms Data Grid - Custom print data cells and column headers in Print Preview
+# WinForms Data Grid - Custom paint data cells and column headers in Print Preview
 
 This example creates a custom Grid Control with new custom draw events (`SamplePrintEvent`, `HeaderPrintEvent`) that allow you to paint data cells and column headers in print preview:
 
