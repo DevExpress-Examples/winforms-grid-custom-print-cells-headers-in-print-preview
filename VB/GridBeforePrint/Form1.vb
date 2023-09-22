@@ -1,19 +1,21 @@
-﻿Imports System
+Imports System
 Imports System.Collections.Generic
 Imports System.Drawing
 
 Namespace GridBeforePrint
-    Partial Public Class Form1
+
+    Public Partial Class Form1
         Inherits DevExpress.XtraEditors.XtraForm
 
         Private customerList As List(Of Customer)
 
         Private Function GetData() As List(Of Customer)
-            Dim list As New List(Of Customer)()
-            For i As Integer = 0 To 14
-                Dim customer As New Customer() With {.FirstName = String.Format("FirstName {0}", i), .LastName = String.Format("LastName {0}", i), .Id = i}
+            Dim list As List(Of Customer) = New List(Of Customer)()
+            For i As Integer = 0 To 15 - 1
+                Dim customer As Customer = New Customer() With {.FirstName = String.Format("FirstName {0}", i), .LastName = String.Format("LastName {0}", i), .Id = i}
                 list.Add(customer)
-            Next i
+            Next
+
             Return list
         End Function
 
@@ -25,7 +27,6 @@ Namespace GridBeforePrint
             customerList = GetData()
             myGridControl1.DataSource = customerList
             Me.Controls.Add(myGridControl1)
-
             AddHandler myGridView1.HeaderPrintEvent, AddressOf MyGridView1_HeaderPrintEvent
             AddHandler myGridView1.SamplePrintEvent, AddressOf MyGridView1_SamplePrintEvent
         End Sub
@@ -38,7 +39,7 @@ Namespace GridBeforePrint
             args.Brick.Style.BackColor = Color.PowderBlue
         End Sub
 
-        Private Sub simpleButton2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles simpleButton2.Click
+        Private Sub simpleButton2_Click(ByVal sender As Object, ByVal e As EventArgs)
             myGridControl1.ShowPrintPreview()
         End Sub
     End Class

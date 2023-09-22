@@ -1,25 +1,29 @@
-﻿Imports DevExpress.XtraGrid.Views.Printing
+Imports DevExpress.XtraGrid.Views.Printing
 Imports DevExpress.XtraPrinting
 
 Namespace GridBeforePrint
+
     Public Class HeaderPrintEventArgs
-        Private privateBrick As ITextBrick
-        Public Property Brick() As ITextBrick
+
+        Private _Brick As ITextBrick, _ColumnInfo As PrintColumnInfo
+
+        Public Property Brick As ITextBrick
             Get
-                Return privateBrick
+                Return _Brick
             End Get
+
             Private Set(ByVal value As ITextBrick)
-                privateBrick = value
+                _Brick = value
             End Set
         End Property
 
-        Private privateColumnInfo As PrintColumnInfo
-        Public Property ColumnInfo() As PrintColumnInfo
+        Public Property ColumnInfo As PrintColumnInfo
             Get
-                Return privateColumnInfo
+                Return _ColumnInfo
             End Get
+
             Private Set(ByVal value As PrintColumnInfo)
-                privateColumnInfo = value
+                _ColumnInfo = value
             End Set
         End Property
 

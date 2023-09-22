@@ -1,5 +1,7 @@
-﻿Namespace GridBeforePrint
-    Partial Public Class Form1
+Namespace GridBeforePrint
+
+    Partial Class Form1
+
         ''' <summary>
         ''' Required designer variable.
         ''' </summary>
@@ -10,14 +12,14 @@
         ''' </summary>
         ''' <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-            If disposing AndAlso (components IsNot Nothing) Then
-                components.Dispose()
+            If disposing AndAlso (Me.components IsNot Nothing) Then
+                Me.components.Dispose()
             End If
+
             MyBase.Dispose(disposing)
         End Sub
 
-        #Region "Windows Form Designer generated code"
-
+'#Region "Windows Form Designer generated code"
         ''' <summary>
         ''' Required method for Designer support - do not modify
         ''' the contents of this method with the code editor.
@@ -26,8 +28,8 @@
             Me.simpleButton2 = New DevExpress.XtraEditors.SimpleButton()
             Me.myGridControl1 = New GridBeforePrint.MyGridControl()
             Me.myGridView1 = New GridBeforePrint.MyGridView()
-            DirectCast(Me.myGridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
-            DirectCast(Me.myGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+            CType((Me.myGridControl1), System.ComponentModel.ISupportInitialize).BeginInit()
+            CType((Me.myGridView1), System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
             ' 
             ' simpleButton2
@@ -37,6 +39,7 @@
             Me.simpleButton2.Size = New System.Drawing.Size(170, 23)
             Me.simpleButton2.TabIndex = 2
             Me.simpleButton2.Text = "Show Print Preview"
+            AddHandler Me.simpleButton2.Click, New System.EventHandler(AddressOf Me.simpleButton2_Click)
             ' 
             ' myGridControl1
             ' 
@@ -45,7 +48,7 @@
             Me.myGridControl1.Name = "myGridControl1"
             Me.myGridControl1.Size = New System.Drawing.Size(744, 375)
             Me.myGridControl1.TabIndex = 3
-            Me.myGridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() { Me.myGridView1})
+            Me.myGridControl1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.myGridView1})
             ' 
             ' myGridView1
             ' 
@@ -61,16 +64,16 @@
             Me.Controls.Add(Me.simpleButton2)
             Me.Name = "Form1"
             Me.Text = "Form1"
-            DirectCast(Me.myGridControl1, System.ComponentModel.ISupportInitialize).EndInit()
-            DirectCast(Me.myGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+            CType((Me.myGridControl1), System.ComponentModel.ISupportInitialize).EndInit()
+            CType((Me.myGridView1), System.ComponentModel.ISupportInitialize).EndInit()
             Me.ResumeLayout(False)
-
         End Sub
 
-        #End Region
-        Private WithEvents simpleButton2 As DevExpress.XtraEditors.SimpleButton
-        Private myGridControl1 As MyGridControl
-        Private myGridView1 As MyGridView
+'#End Region
+        Private simpleButton2 As DevExpress.XtraEditors.SimpleButton
+
+        Private myGridControl1 As GridBeforePrint.MyGridControl
+
+        Private myGridView1 As GridBeforePrint.MyGridView
     End Class
 End Namespace
-

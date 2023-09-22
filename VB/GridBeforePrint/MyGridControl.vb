@@ -1,4 +1,4 @@
-﻿Imports DevExpress.Utils
+Imports DevExpress.Utils
 Imports DevExpress.XtraEditors.ViewInfo
 Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Columns
@@ -7,17 +7,18 @@ Imports DevExpress.XtraGrid.Views.Base
 Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Imports DevExpress.XtraGrid.Views.Printing
-Imports DevExpress.XtraPrinting
 Imports System.ComponentModel
 
 Namespace GridBeforePrint
-    <ToolboxItem(True)> _
+
+    <ToolboxItem(True)>
     Public Class MyGridControl
         Inherits GridControl
 
         Protected Overrides Function CreateDefaultView() As BaseView
             Return CreateView("MyGridView")
         End Function
+
         Protected Overrides Sub RegisterAvailableViewsCore(ByVal collection As InfoCollection)
             MyBase.RegisterAvailableViewsCore(collection)
             collection.Add(New MyGridViewInfoRegistrator())
@@ -27,11 +28,12 @@ Namespace GridBeforePrint
     Public Class MyGridViewInfoRegistrator
         Inherits GridInfoRegistrator
 
-        Public Overrides ReadOnly Property ViewName() As String
+        Public Overrides ReadOnly Property ViewName As String
             Get
                 Return "MyGridView"
             End Get
         End Property
+
         Public Overrides Function CreateView(ByVal grid As GridControl) As BaseView
             Return New MyGridView(TryCast(grid, GridControl))
         End Function
@@ -43,6 +45,7 @@ Namespace GridBeforePrint
         Protected Overrides Function CreatePrintInfoInstance(ByVal args As PrintInfoArgs) As BaseViewPrintInfo
             Return New MyGridViewPrintInfo(args)
         End Function
+
         Public Delegate Sub SampleEventHandler(ByVal sender As Object, ByVal args As SamplePrintEventArgs)
 
         Public Delegate Sub HeaderPainterEventHandler(ByVal sender As Object, ByVal args As HeaderPrintEventArgs)
@@ -62,7 +65,8 @@ Namespace GridBeforePrint
         Public Sub New()
             Me.New(Nothing)
         End Sub
-        Public Sub New(ByVal grid As DevExpress.XtraGrid.GridControl)
+
+        Public Sub New(ByVal grid As GridControl)
             MyBase.New(grid)
         End Sub
 
@@ -70,7 +74,7 @@ Namespace GridBeforePrint
             MyBase.New(grid)
         End Sub
 
-        Protected Overrides ReadOnly Property ViewName() As String
+        Protected Overrides ReadOnly Property ViewName As String
             Get
                 Return "MyGridView"
             End Get
@@ -81,11 +85,11 @@ Namespace GridBeforePrint
         End Function
 
         Friend Function GoAndGetRowCellDisplayTextCore(ByVal rowHandle As Integer, ByVal column As GridColumn, ByVal bev As BaseEditViewInfo, ByVal value As Object, ByVal forGroupRow As Boolean) As String
-            Return MyBase.GetRowCellDisplayTextCore(rowHandle, column, bev, value, forGroupRow)
+            Return GetRowCellDisplayTextCore(rowHandle, column, bev, value, forGroupRow)
         End Function
 
         Public Function GetHorzAlignment(ByVal rowHandle As Integer, ByVal column As GridColumn, ByVal currentAlignment As HorzAlignment) As HorzAlignment
-            Return MyBase.GetRowCellDefaultAlignment(rowHandle, column, currentAlignment)
+            Return GetRowCellDefaultAlignment(rowHandle, column, currentAlignment)
         End Function
     End Class
 
@@ -97,7 +101,7 @@ Namespace GridBeforePrint
         End Sub
 
         Protected Friend Sub GoAndUpdateCellAppearanceCore(ByVal cell As GridCellInfo)
-            MyBase.UpdateCellAppearanceCore(cell)
+            UpdateCellAppearanceCore(cell)
         End Sub
     End Class
 End Namespace

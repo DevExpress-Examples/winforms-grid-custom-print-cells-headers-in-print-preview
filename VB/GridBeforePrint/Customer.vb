@@ -1,40 +1,40 @@
-﻿Imports System
-Imports System.Collections.Generic
-Imports System.Linq
-Imports System.Text
-
 Namespace GridBeforePrint
+
     Friend Class Customer
 
-        Private firstName_Renamed As String
+        Private firstNameField As String
 
-        Private lastName_Renamed As String
+        Private lastNameField As String
 
-        Private id_Renamed As Integer
-        Public Property Id() As Integer
+        Private idField As Integer
+
+        Public Property Id As Integer
             Get
-                Return id_Renamed
+                Return idField
             End Get
+
             Set(ByVal value As Integer)
-                id_Renamed = value
+                idField = value
             End Set
         End Property
 
-        Public Property LastName() As String
+        Public Property LastName As String
             Get
-                Return lastName_Renamed
+                Return lastNameField
             End Get
+
             Set(ByVal value As String)
-                lastName_Renamed = value
+                lastNameField = value
             End Set
         End Property
 
-        Public Property FirstName() As String
+        Public Property FirstName As String
             Get
-                Return firstName_Renamed
+                Return firstNameField
             End Get
+
             Set(ByVal value As String)
-                firstName_Renamed = value
+                firstNameField = value
             End Set
         End Property
 

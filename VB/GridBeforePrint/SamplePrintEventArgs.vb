@@ -1,45 +1,49 @@
-﻿Imports DevExpress.XtraGrid.Columns
+Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraPrinting
 
 Namespace GridBeforePrint
+
     Public Class SamplePrintEventArgs
-        Private privateIsPreview As Boolean
-        Public Property IsPreview() As Boolean
+
+        Private _IsPreview As Boolean, _Brick As IVisualBrick, _Column As GridColumn, _RowHandle As Integer
+
+        Public Property IsPreview As Boolean
             Get
-                Return privateIsPreview
+                Return _IsPreview
             End Get
+
             Private Set(ByVal value As Boolean)
-                privateIsPreview = value
+                _IsPreview = value
             End Set
         End Property
 
-        Private privateBrick As IVisualBrick
-        Public Property Brick() As IVisualBrick
+        Public Property Brick As IVisualBrick
             Get
-                Return privateBrick
+                Return _Brick
             End Get
+
             Private Set(ByVal value As IVisualBrick)
-                privateBrick = value
+                _Brick = value
             End Set
         End Property
 
-        Private privateColumn As GridColumn
-        Public Property Column() As GridColumn
+        Public Property Column As GridColumn
             Get
-                Return privateColumn
+                Return _Column
             End Get
+
             Private Set(ByVal value As GridColumn)
-                privateColumn = value
+                _Column = value
             End Set
         End Property
 
-        Private privateRowHandle As Integer
-        Public Property RowHandle() As Integer
+        Public Property RowHandle As Integer
             Get
-                Return privateRowHandle
+                Return _RowHandle
             End Get
+
             Private Set(ByVal value As Integer)
-                privateRowHandle = value
+                _RowHandle = value
             End Set
         End Property
 
