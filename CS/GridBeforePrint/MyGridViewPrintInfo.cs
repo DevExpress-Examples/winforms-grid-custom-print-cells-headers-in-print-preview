@@ -85,8 +85,7 @@ namespace GridBeforePrint
                 View.OptionsPrint.PrintHorzLines,
                 View.OptionsPrint.PrintVertLines,
                 cell.ColumnInfo.Column.DisplayFormat.FormatString,
-                CalcBrickBordersEX(),
-                new PaddingInfo(2, GraphicsDpi.Pixel)
+                CalcBrickBordersEX()
                 );
 
             IVisualBrick brick = cell.Editor.GetBrick(info);
